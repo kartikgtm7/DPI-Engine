@@ -1,0 +1,10 @@
+# Ignore binaries
+*.exe
+dpi_engine
+
+# Ignore generated files
+*.pcap
+
+# OS files
+.DS_Store
+Thumbs.db
