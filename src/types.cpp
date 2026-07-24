@@ -105,10 +105,21 @@ AppType sniToAppType(const std::string& sni) {
     }
     
     // Twitter/X
+    // Twitter/X — match "x.com"/"t.co" as the actual domain (or subdomain),
+    // not as a coincidental substring of another domain
+    auto endsWithDomain = [](const std::string& host, const std::string& domain) {
+        if (host == domain) return true;
+        if (host.length() > domain.length() &&
+            host.compare(host.length() - domain.length() - 1, domain.length() + 1, "." + domain) == 0) {
+            return true;
+        }
+        return false;
+    };
+
     if (lower_sni.find("twitter") != std::string::npos ||
         lower_sni.find("twimg") != std::string::npos ||
-        lower_sni.find("x.com") != std::string::npos ||
-        lower_sni.find("t.co") != std::string::npos) {
+        endsWithDomain(lower_sni, "x.com") ||
+        endsWithDomain(lower_sni, "t.co")) {
         return AppType::TWITTER;
     }
     
