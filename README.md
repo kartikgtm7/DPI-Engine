@@ -2,6 +2,10 @@
 
 A high-performance **Deep Packet Inspection (DPI) engine** built in **C++** that analyzes network traffic from PCAP files, extracts application-level information from encrypted HTTPS packets, and enforces rule-based traffic filtering.
 
+**🌐 [Live Demo](https://dpi-engine-ncfp.onrender.com)** — try it in your browser, no setup required &nbsp;|&nbsp; ⭐ Star this repo if you find it useful
+
+> Note: the demo may take ~20-30s to wake up on first load (free-tier hosting sleeps when idle).
+
 ---
 
 ## 📌 Overview
@@ -31,6 +35,7 @@ It processes captured network packets and performs:
   * IP blocking
 * Multi-threaded architecture
 * Clean modular design
+* Browser-based demo (FastAPI + web UI) for trying the engine without a local build
 
 ---
 
@@ -59,6 +64,17 @@ PCAP → Parse → Flow Tracking → SNI Extraction → Classification → Rule 
 ### 🔍 Verification in Wireshark
 
 ![Wireshark Output](wireshark_view.png)
+
+---
+
+## 🌐 Try It Online
+
+No compiler, no setup — the [live demo](https://dpi-engine-ncfp.onrender.com) runs the same C++ engine behind a browser UI:
+
+* Upload your own `.pcap`, or use the bundled sample traffic
+* Toggle app/domain/IP blocking rules
+* See the full report (packet counts, app breakdown, detected domains, blocked flows)
+* Download the filtered output `.pcap`
 
 ---
 
@@ -126,6 +142,7 @@ Open the output `.pcap` file in Wireshark:
 * Networking (TCP/IP, TLS)
 * PCAP parsing
 * Python (test data generation)
+* FastAPI + Docker (web demo)
 
 ---
 
